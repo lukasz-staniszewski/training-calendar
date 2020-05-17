@@ -18,9 +18,14 @@ public:
 private slots:
     void on_calendar_selectionChanged();
 
+    void on_backtodaybutton_clicked();
+
 private:
     Ui::CalendarWindow *ui;
     Person* person;
+    void showWelcomeMessage();
+    void printActualDate();
+    void highlightToday();
 };
 
 #endif // CALENDARWINDOW_H
