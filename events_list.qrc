@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>events/Sportevents.txt</file>
+    </qresource>
+</RCC>

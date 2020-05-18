@@ -124,7 +124,6 @@ void CalendarWindow::display_this_day_events(QDate date)
             ui->SecondFamilyId->setText("2.");
             ui->SecondFamilyActivity->setText(this->familyevents->events[iter].get_activity());
             ui->SecondFamilyName->setText(this->familyevents->events[iter].get_person_name());
-            qDebug()<<"TU OK 2";
             if(how_many >= 3)
             {
                 iter += 1;
@@ -152,11 +151,12 @@ void CalendarWindow::display_this_day_events(QDate date)
 }
 void  CalendarWindow::highlightToday()
 {
-    QPainter painter;
-    painter.setPen(Qt::blue);
+
     QTextCharFormat qtcf;
     qtcf.setFontWeight(80);
-    qtcf.setForeground(QBrush(Qt::green));
+    QColor todaycolor;
+    todaycolor.setRgb(0, 82, 204);
+    qtcf.setForeground(QBrush(todaycolor));
     qtcf.setFontItalic(true);
     qtcf.setFontKerning(true);
     ui->calendar->setDateTextFormat(QDate::currentDate(), qtcf);

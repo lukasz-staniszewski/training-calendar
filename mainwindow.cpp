@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPixmap>
+#include <QFile>
 #include <QMessageBox>
 #include <QDebug>
 #include <QDesktopServices>
@@ -33,31 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pict->setPixmap(pix.scaled(800, 500, Qt::KeepAspectRatio));
     person_using = new Person;
     familyevents = new Events;
-    Event ev1("Mateusz", "Piłka nożna", "19-05-2020");
-    Event ev2("Lukasz", "Piłka nożna", "19-05-2020");
-    Event ev3("Albert", "Piłka nożna", "24-05-2020");
-    Event ev4("Ania", "Piłka nożna", "24-05-2020");
-    Event ev5("Lukasz", "Piłka nożna", "21-05-2020");
-    Event ev6("Lukasz", "Piłka nożna", "24-05-2020");
-    Event ev7("Ania", "Piłka nożna", "19-05-2020");
-    Event ev8("Albert", "Piłka nożna", "19-05-2020");
-    Event ev9("Albert", "Piłka nożna", "19-05-2020");
-    Event ev10("Mateusz", "Piłka nożna", "24-05-2020");
-    Event ev11("Mateusz", "Piłka nożna", "19-05-2020");
-    Event ev12("Lukasz", "Silownia", "22-05-2020");
-    this->familyevents->add_event(ev1);
-    this->familyevents->add_event(ev2);
-    this->familyevents->add_event(ev3);
-    this->familyevents->add_event(ev4);
-    this->familyevents->add_event(ev5);
-    this->familyevents->add_event(ev6);
-    this->familyevents->add_event(ev7);
-    this->familyevents->add_event(ev8);
-    this->familyevents->add_event(ev9);
-    this->familyevents->add_event(ev10);
-    this->familyevents->add_event(ev11);
-    this->familyevents->add_event(ev12);
-
+    this->familyevents->get_from_file(":/data/events/Sportevents.txt");
 }
 
 MainWindow::~MainWindow()
