@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "person.h"
 #include "calendarwindow.h"
+#include "events.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,9 +21,13 @@ public:
 private slots:
     void on_login_clicked();
 
+    void on_gitbut_clicked();
+
 private:
     Ui::MainWindow *ui;
     CalendarWindow *calwin;
     Person* person_using;
+    Events* familyevents;
+
 };
 #endif // MAINWINDOW_H

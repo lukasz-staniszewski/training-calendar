@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/logo.jpg</file>
+        <file>img/git.jpg</file>
+        <file>img/icon.jpg</file>
+        <file>img/next_month.jpg</file>
+        <file>img/prev_month.jpg</file>
+        <file>img/today.jpg</file>
+        <file>img/nearest.jpg</file>
+        <file>img/familytday.jpg</file>
+    </qresource>
+</RCC>

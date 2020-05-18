@@ -17,12 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     calendarwindow.cpp \
+    event.cpp \
+    events.cpp \
     main.cpp \
     mainwindow.cpp \
     person.cpp
 
 HEADERS += \
     calendarwindow.h \
+    event.h \
+    events.h \
     mainwindow.h \
     person.h
 
@@ -34,3 +38,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    starting_image.qrc
