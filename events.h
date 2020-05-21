@@ -9,6 +9,7 @@ class Events
 {
 public:
     Events();
+    ~Events();
     std::vector<Event> events;
     void add_event(Event ev);
     void get_from_file(QString filename);

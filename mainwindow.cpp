@@ -16,7 +16,6 @@ bool check_name_corectness(std::string str)
     }
     for(unsigned int i=0; i < str.length(); i++)
     {
-
         if(str[i]<'a' && str[i]>'z')
         {
             return false;

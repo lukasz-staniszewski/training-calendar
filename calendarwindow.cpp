@@ -25,8 +25,16 @@ CalendarWindow::CalendarWindow(QWidget *parent, Person *person, Events *events) 
 }
 void CalendarWindow::display_nearest_person_events()
 {
+    unsigned int iter_t=0;
+    QDate tempDate;
+    while(tempDate.fromString(this->familyevents->events[iter_t].get_date(), "dd-MM-yyyy") < QDate::currentDate())
+    {
+        qDebug()<<tempDate.fromString(this->familyevents->events[iter_t].get_date(), "dd-MM-yyyy");
+        qDebug()<<QDate::currentDate();
+        iter_t += 1;
+    }
     int how_many = 0;
-    for(unsigned int iter = 0; iter<familyevents->events.size(); ++iter)
+    for(unsigned int iter = iter_t; iter<familyevents->events.size(); ++iter)
     {
         if(this->familyevents->events[iter].get_person_name().toStdString() == this->person->get_name())
         {
@@ -35,7 +43,7 @@ void CalendarWindow::display_nearest_person_events()
     }
     if (how_many >= 1)
     {
-        unsigned int iter = 0;
+        unsigned int iter = iter_t;
         while(this->familyevents->events[iter].get_person_name().toStdString() != this->person->get_name())
         {
             iter += 1;

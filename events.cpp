@@ -7,6 +7,11 @@
 
 Events::Events()
 {
+
+}
+Events::~Events()
+{
+    qDebug()<<"SAVING FILE!";
 }
 
 void Events::add_event(Event ev)
