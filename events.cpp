@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <string>
 #include <QDebug>
+#include<sstream>
 
 Events::Events()
 {
@@ -30,45 +31,17 @@ void Events::delEvent(QString p_name, QString act_name, QString g_date, QString 
         }
     }
 }
-void Events::getFromFile(QString filename)
-{
-    QFile file(filename);
-    if(!file.open(QFile::ReadOnly|QFile::Text))
-    {
-        qDebug()<<"OPENING FILE ERROR!";
-        return;
-    }
-    QString buffor;
-    QString data[5];
-    QTextStream in (&file);
-    in.setCodec("UTF-8");
-    int i = 0;
-    bool dot = false;
-    while(!in.atEnd())
-    {
-        buffor = in.readLine();
-        for (auto x : buffor)
-        {
-            if (x == ';')
-            {
-                    ++i;
-                    dot = true;
 
-            }
-            else
-            {
-                if (dot != true)
-                    data[i] += x;
-                dot = false;
-            }
-        }
-        i = 0;
-        this->addEvent(Event(data[0].toStdString(), data[1].toStdString(), data[2].toStdString(), data[3].toStdString(), data[4].toStdString()));
-        for (int j=0; j<5; ++j)
-        {
-            data[j].clear();
-        }
-   }
+void Events::getFromFile(QString filename)
+{   std::string line;
+    std::ifstream myfile(filename.toStdString());
+    while(std::getline(myfile, line))
+    {
+        std::istringstream iss(line);
+        Event tempEvent;
+        iss >> tempEvent;
+        this->addEvent(tempEvent);
+    }
 }
 void Events::saveToFile(std::string filename)
 {
