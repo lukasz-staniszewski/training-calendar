@@ -57,6 +57,7 @@ void CalendarWindow::displayNearestPersonEvents()
         ui->FirstYourId->setText("1.");
         ui->FirstYourActivity->setText(this->familyevents->events[iter].getActivity());
         ui->FirstYourDate->setText(this->familyevents->events[iter].getDate());
+        ui->FirstYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
         if(how_many >= 2)
         {
             iter += 1;
@@ -67,6 +68,7 @@ void CalendarWindow::displayNearestPersonEvents()
             ui->SecondYourId->setText("2.");
             ui->SecondYourActivity->setText(this->familyevents->events[iter].getActivity());
             ui->SecondYourDate->setText(this->familyevents->events[iter].getDate());
+            ui->SecondYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
             if(how_many >= 3)
             {
                 iter += 1;
@@ -77,6 +79,7 @@ void CalendarWindow::displayNearestPersonEvents()
                 ui->ThirdYourId->setText("3.");
                 ui->ThirdYourActivity->setText(this->familyevents->events[iter].getActivity());
                 ui->ThirdYourDate->setText(this->familyevents->events[iter].getDate());
+                ui->ThirdYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
                 if(how_many >= 4)
                 {
                     iter += 1;
@@ -87,6 +90,7 @@ void CalendarWindow::displayNearestPersonEvents()
                     ui->FourthYourId->setText("4.");
                     ui->FourthYourActivity->setText(this->familyevents->events[iter].getActivity());
                     ui->FourthYourDate->setText(this->familyevents->events[iter].getDate());
+                    ui->FourthYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
                 }
             }
         }
@@ -109,6 +113,11 @@ void CalendarWindow::clearThisDayEvents()
     ui->ThirdYourDate->setText("");
     ui->FourthYourDate->setText("");
 
+    ui->FirstYourHour->setText("");
+    ui->SecondYourHour->setText("");
+    ui->ThirdYourHour->setText("");
+    ui->FourthYourHour->setText("");
+
     ui->FirstFamilyId->setText("");
     ui->SecondFamilyId->setText("");
     ui->ThirdFamilyId->setText("");
@@ -123,6 +132,11 @@ void CalendarWindow::clearThisDayEvents()
     ui->SecondFamilyName->setText("");
     ui->ThirdFamilyName->setText("");
     ui->FourthFamilyName->setText("");
+
+    ui->FirstFamilyHour->setText("");
+    ui->SecondFamilyHour->setText("");
+    ui->ThirdFamilyHour->setText("");
+    ui->FourthFamilyHour->setText("");
 }
 void CalendarWindow::displayThisDayEvents(QDate date)
 {
@@ -145,6 +159,7 @@ void CalendarWindow::displayThisDayEvents(QDate date)
         ui->FirstFamilyId->setText("1.");
         ui->FirstFamilyActivity->setText(this->familyevents->events[iter].getActivity());
         ui->FirstFamilyName->setText(this->familyevents->events[iter].getPersonName());
+        ui->FirstFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
         if(how_many >= 2)
         {
             iter += 1;
@@ -155,6 +170,7 @@ void CalendarWindow::displayThisDayEvents(QDate date)
             ui->SecondFamilyId->setText("2.");
             ui->SecondFamilyActivity->setText(this->familyevents->events[iter].getActivity());
             ui->SecondFamilyName->setText(this->familyevents->events[iter].getPersonName());
+            ui->SecondFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
             if(how_many >= 3)
             {
                 iter += 1;
@@ -165,6 +181,7 @@ void CalendarWindow::displayThisDayEvents(QDate date)
                 ui->ThirdFamilyId->setText("3.");
                 ui->ThirdFamilyActivity->setText(this->familyevents->events[iter].getActivity());
                 ui->ThirdFamilyName->setText(this->familyevents->events[iter].getPersonName());
+                ui->ThirdFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
                 if(how_many >= 4)
                 {
                     iter += 1;
@@ -175,6 +192,7 @@ void CalendarWindow::displayThisDayEvents(QDate date)
                     ui->FourthFamilyId->setText("4.");
                     ui->FourthFamilyActivity->setText(this->familyevents->events[iter].getActivity());
                     ui->FourthFamilyName->setText(this->familyevents->events[iter].getPersonName());
+                    ui->FourthFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
                 }
             }
         }
