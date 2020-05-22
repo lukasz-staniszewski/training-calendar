@@ -49,3 +49,33 @@ std::ostream& operator<< (std::ostream& os, Event &event)
 
     return os;
 }
+std::istream& operator>> (std::istream& in, Event &event)
+{
+    std::string name, sHour, eHour, activ, date, temp;
+    in>>name>>activ;
+    name.pop_back();
+    while(activ[activ.length()-1] != ';')
+    {
+        in >> temp;
+        activ = activ + ' ' + temp;
+    }
+    activ.pop_back();
+    in>>date>>sHour>>eHour;
+    date.pop_back();
+    sHour.pop_back();
+
+    event.person = name;
+    event.activity = activ;
+
+    QString qstr(QString::fromStdString(date));
+    QDate cov_date(QDate::fromString(qstr, "dd-MM-yyyy"));
+    event.date = cov_date;
+    QString qstr2(QString::fromStdString(sHour));
+    QTime cov_hour1(QTime::fromString(qstr2, "hh:mm"));
+    event.start_hour = cov_hour1;
+    QString qstr3(QString::fromStdString(eHour));
+    QTime cov_hour2(QTime::fromString(qstr3, "hh:mm"));
+    event.end_hour = cov_hour2;
+
+    return in;
+}
