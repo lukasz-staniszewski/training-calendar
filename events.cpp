@@ -14,13 +14,23 @@ Events::~Events()
     qDebug()<<"SAVING FILE!";
 }
 
-void Events::add_event(Event ev)
+void Events::addEvent(Event ev)
 {
     this->events.push_back(ev);
     std::sort(events.begin(), events.end(), comparePtrs);
 }
 
-void Events::get_from_file(QString filename)
+void Events::delEvent(QString p_name, QString act_name, QString g_date, QString g_stime)
+{
+    for(unsigned int i = 0; i<events.size(); i++)
+    {
+        if(events[i].getDate()==g_date && events[i].getPersonName()==p_name && events[i].getStartHour() == g_stime && events[i].getActivity() == act_name)
+        {
+            events.erase(events.begin() + i);
+        }
+    }
+}
+void Events::getFromFile(QString filename)
 {
     QFile file(filename);
     if(!file.open(QFile::ReadOnly|QFile::Text))
@@ -29,7 +39,7 @@ void Events::get_from_file(QString filename)
         return;
     }
     QString buffor;
-    QString data[3];
+    QString data[5];
     QTextStream in (&file);
     in.setCodec("UTF-8");
     int i = 0;
@@ -53,11 +63,18 @@ void Events::get_from_file(QString filename)
             }
         }
         i = 0;
-        this->add_event(Event(data[0].toStdString(), data[1].toStdString(), data[2].toStdString()));
-        for (int j=0; j<3; ++j)
+        this->addEvent(Event(data[0].toStdString(), data[1].toStdString(), data[2].toStdString(), data[3].toStdString(), data[4].toStdString()));
+        for (int j=0; j<5; ++j)
         {
             data[j].clear();
         }
+   }
+}
+void Events::saveToFile(std::string filename)
+{
+    std::ofstream myfile(filename);
+    for(auto event:Events::events)
+    {
+        myfile << event << "\n";
     }
 }
-

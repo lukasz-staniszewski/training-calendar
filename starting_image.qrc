@@ -8,5 +8,14 @@
         <file>img/today.jpg</file>
         <file>img/nearest.jpg</file>
         <file>img/familytday.jpg</file>
+        <file>img/add_event.jpg</file>
+        <file>img/add_training_text.jpg</file>
+        <file>img/finish_hour.jpg</file>
+        <file>img/start_hour.jpg</file>
+        <file>img/type_of_trainging.jpg</file>
+        <file>img/cancbutt.jpg</file>
+        <file>img/okbutt.jpg</file>
+        <file>img/del_event.jpg</file>
+        <file>img/del_traininng text.jpg</file>
     </qresource>
 </RCC>

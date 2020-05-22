@@ -11,9 +11,11 @@ public:
     Events();
     ~Events();
     std::vector<Event> events;
-    void add_event(Event ev);
-    void get_from_file(QString filename);
-    static bool comparePtrs(Event ev1, Event ev2) { return (ev1.get_date() < ev2.get_date()); }
+    void addEvent(Event ev);
+    void delEvent(QString p_name, QString act_name, QString g_date, QString g_stime);
+    void getFromFile(QString filename);
+    void saveToFile(std::string filename);
+    static bool comparePtrs(Event ev1, Event ev2) { return (ev1.getDate() < ev2.getDate()); }
 };
 
 #endif // EVENTS_H

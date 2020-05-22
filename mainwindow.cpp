@@ -8,7 +8,7 @@
 #include <QUrl>
 
 
-bool check_name_corectness(std::string str)
+bool checkNameCorectness(std::string str)
 {
     if(str.length()<3||str.length()>15||(str[0]<'A' || str[0]>'Z'))
     {
@@ -33,29 +33,29 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pict->setPixmap(pix.scaled(800, 500, Qt::KeepAspectRatio));
     person_using = new Person;
     familyevents = new Events;
-    this->familyevents->get_from_file(":/data/events/Sportevents.txt");
+    this->familyevents->getFromFile("Sportevents.txt");
 }
 
 MainWindow::~MainWindow()
 {
+    this->familyevents->saveToFile("Sportevents.txt");
     delete ui;
     delete calwin;
     delete person_using;
 }
 
-
 void MainWindow::on_login_clicked()
 {
     QString name = ui->lineEdit->text();
-    if(check_name_corectness(name.toStdString())){
-        person_using->set_name(name.toStdString());
+    if(checkNameCorectness(name.toStdString())){
+        person_using->setName(name.toStdString());
         hide();
         calwin = new CalendarWindow(this, person_using, familyevents);
         calwin->show();
     }
     else
     {
-        QMessageBox::warning(this, "FAILURE", "YOU TYPED WRONG NAME!");
+        QMessageBox::warning(this, "BŁĄD", "WPISANE ZOSTAŁO ZŁE IMIE!");
     }
 }
 

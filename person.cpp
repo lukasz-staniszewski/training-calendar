@@ -2,7 +2,7 @@
 
 Person::Person(std::string n): name(n){}
 
-void Person::set_name(std::string new_name)
+void Person::setName(std::string new_name)
 {
     if (new_name.length() >= 3 && new_name.length() <= 15)
     {
@@ -10,7 +10,7 @@ void Person::set_name(std::string new_name)
     }
 }
 
-std::string Person::get_name() const
+std::string Person::getName() const
 {
     return this->name;
 }

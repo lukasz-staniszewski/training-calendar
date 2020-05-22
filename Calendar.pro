@@ -16,7 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addeventscreen.cpp \
     calendarwindow.cpp \
+    deleteeventwindow.cpp \
     event.cpp \
     events.cpp \
     main.cpp \
@@ -24,14 +26,18 @@ SOURCES += \
     person.cpp
 
 HEADERS += \
+    addeventscreen.h \
     calendarwindow.h \
+    deleteeventwindow.h \
     event.h \
     events.h \
     mainwindow.h \
     person.h
 
 FORMS += \
+    addeventscreen.ui \
     calendarwindow.ui \
+    deleteeventwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
@@ -40,5 +46,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    data.qrc \
     starting_image.qrc

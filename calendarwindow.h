@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <person.h>
 #include <events.h>
+#include "addeventscreen.h"
+#include "deleteeventwindow.h"
 namespace Ui {
 class CalendarWindow;
 }
@@ -15,6 +17,8 @@ class CalendarWindow : public QDialog
 public:
     explicit CalendarWindow(QWidget *parent = nullptr, Person *person = nullptr, Events *events = nullptr);
     ~CalendarWindow();
+    void refreshEvents(QDate date);
+    QDate getChoosenDate() const;
 
 private slots:
     void on_calendar_selectionChanged();
@@ -25,17 +29,24 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_addEventButton_clicked();
+
+    void on_delTraining_clicked();
+
 private:
     Ui::CalendarWindow *ui;
     Person* person;
     Events* familyevents;
+    AddEventScreen* addevwin;
+    DeleteEventWindow* delevwin;
     void showWelcomeMessage();
-    void display_nearest_person_events();
-    void display_this_day_events(QDate date);
+    void displayNearestPersonEvents();
+    void displayThisDayEvents(QDate date);
     void displayNearDates();
-    void clear_this_day_events();
+    void clearThisDayEvents();
     void printActualDate();
     void highlightToday();
+    void setupCalendar();
 };
 
 #endif // CALENDARWINDOW_H
