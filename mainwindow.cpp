@@ -31,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     QPixmap pix(":/img/logo.jpg");
     ui->pict->setPixmap(pix.scaled(800, 500, Qt::KeepAspectRatio));
-    person_using = new Person;
     familyevents = new Events;
     this->familyevents->getFromFile("Sportevents.txt");
 }
@@ -48,7 +47,10 @@ void MainWindow::on_login_clicked()
 {
     QString name = ui->lineEdit->text();
     if(checkNameCorectness(name.toStdString())){
-        person_using->setName(name.toStdString());
+        if(name[name.length()-1] == 'a')
+            person_using = new Woman(name.toStdString());
+        else
+            person_using = new Man(name.toStdString());
         hide();
         calwin = new CalendarWindow(this, person_using, familyevents);
         calwin->show();
