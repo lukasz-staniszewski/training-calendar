@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "person.h"
+#include "man.h"
+#include "woman.h"
 #include "calendarwindow.h"
 #include "events.h"
 
