@@ -4,6 +4,7 @@
 
 class Person
 {
+protected:
     std::string name;
 public:
     Person(std::string n="blank");
