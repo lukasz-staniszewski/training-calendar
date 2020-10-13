@@ -1,0 +1,15 @@
+debug/addeventscreen.o
+debug/calendarwindow.o
+debug/deleteeventwindow.o
+debug/event.o
+debug/events.o
+debug/main.o
+debug/mainwindow.o
+debug/man.o
+debug/person.o
+debug/woman.o
+debug/qrc_starting_image.o
+debug/moc_addeventscreen.o
+debug/moc_calendarwindow.o
+debug/moc_deleteeventwindow.o
+debug/moc_mainwindow.o

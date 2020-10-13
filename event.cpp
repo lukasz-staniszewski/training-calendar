@@ -24,7 +24,7 @@ QString Event::getPersonName() const
 }
 QString Event::getDate() const
 {
-    return QString(date.toString("dd-MM-yyyy"));
+    return QString(this->date.toString("dd-MM-yyyy"));
 }
 QString Event::getActivity() const
 {

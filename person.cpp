@@ -14,3 +14,8 @@ std::string Person::getName() const
 {
     return this->name;
 }
+
+void Person::operator=(const std::string new_name)
+{
+    setName(new_name);
+}

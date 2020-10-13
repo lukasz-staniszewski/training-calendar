@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QStandardPaths>
 
 
 bool checkNameCorectness(std::string str)
@@ -32,15 +33,16 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap pix(":/img/logo.jpg");
     ui->pict->setPixmap(pix.scaled(800, 500, Qt::KeepAspectRatio));
     familyevents = new Events;
-    this->familyevents->getFromFile("Sportevents.txt");
+    this->familyevents->getFromFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QString("/Sportevents.txt"));
+
 }
 
 MainWindow::~MainWindow()
 {
-    this->familyevents->saveToFile("Sportevents.txt");
+    this->familyevents->saveToFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation).toStdString() + "/Sportevents.txt");
     delete ui;
     delete calwin;
-    delete person_using;
+    delete familyevents;
 }
 
 void MainWindow::on_login_clicked()

@@ -23,7 +23,9 @@ SOURCES += \
     events.cpp \
     main.cpp \
     mainwindow.cpp \
-    person.cpp
+    man.cpp \
+    person.cpp \
+    woman.cpp
 
 HEADERS += \
     addeventscreen.h \
@@ -32,7 +34,9 @@ HEADERS += \
     event.h \
     events.h \
     mainwindow.h \
-    person.h
+    man.h \
+    person.h \
+    woman.h
 
 FORMS += \
     addeventscreen.ui \

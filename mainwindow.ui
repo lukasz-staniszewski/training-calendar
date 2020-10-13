@@ -344,6 +344,9 @@
     <property name="text">
      <string>ZALOGUJ</string>
     </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">

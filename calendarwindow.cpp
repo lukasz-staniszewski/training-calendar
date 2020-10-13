@@ -17,192 +17,288 @@ CalendarWindow::CalendarWindow(QWidget *parent, Person *person, Events *events) 
     ui->setupUi(this);
     addevwin = new AddEventScreen(this, familyevents);
     delevwin = new DeleteEventWindow(this, familyevents);
+    clearNFE();
+    clearNPE();
     showWelcomeMessage();
     printActualDate();
     highlightToday();
     refreshEvents(QDate::currentDate());
-    // displayNearestPersonEvents();
-    // displayThisDayEvents(QDate::currentDate());
     setupCalendar();
+    paintTakenDays();
+    deleteButton();
 }
 
+CalendarWindow::~CalendarWindow()
+{
+    delete ui;
+    delete addevwin;
+    delete delevwin;
+}
+void CalendarWindow::setupNPE()
+{
+    this->npe_bar.clear();
+    this->npe_activity.clear();
+    this->npe_hour.clear();
+    this->npe_date.clear();
+    QLabel *bar;
+    QLabel *act;
+    QLabel *date;
+    QLabel *hour;
+    int paritycounter = 0;
+    for(unsigned int i=0; i<this->familyevents->events.size(); i++)
+    {
+        QDate tempDate;
+        if(tempDate.fromString(this->familyevents->events[i].getDate(),"dd-MM-yyyy") >= QDate::currentDate() &&
+           this->familyevents->events[i].getPersonName().toStdString() == this->person->getName())
+        {
+            bar = new QLabel(this);
+            act = new QLabel(this);
+            date = new QLabel(this);
+            hour = new QLabel(this);
+            QPixmap qmp;
+            if(paritycounter++%2 == 0){
+                qmp = QPixmap(":/img/green-bar.jpg");
+            }
+            else{
+                qmp = QPixmap(":/img/yellow-bar.jpg");
+            }
+            bar->setPixmap(qmp);
+            bar->setGeometry(this->npe_bar_pos[0],
+                             this->npe_bar_pos[1] + this->npe_bar.size() * this->standard_move,
+                             this->bar_size[0],
+                             this->bar_size[1]);
+            bar->setText(QString().fromStdString(""));
+            bar->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            bar->setAlignment(Qt::AlignLeft | Qt::AlignHCenter);
+            act->setText(this->familyevents->events[i].getActivity());
+            QFont font;
+            font.setBold(true);
+            font.setKerning(true);
+            font.setFamily("MS Shell Dlg 2");
+            font.setWeight(9);
+            act->setFont(font);
+            date->setFont(font);
+            font.setWeight(8);
+            hour->setFont(font);
+            date->setText(this->familyevents->events[i].getDate());
+            hour->setText(this->familyevents->events[i].getStartHour() + " - " + this->familyevents->events[i].getEndHour());
+            act->setGeometry(this->npe_act_pos[0],
+                             this->npe_act_pos[1] + this->npe_bar.size() * this->standard_move,
+                             this->npe_act_size[0],
+                             this->npe_act_size[1]);
+            date->setGeometry(this->npe_date_pos[0],
+                              this->npe_date_pos[1] + this->npe_bar.size() * this->standard_move,
+                              this->npe_date_size[0],
+                              this->npe_date_size[1]);
+            hour->setGeometry(this->npe_hour_pos[0],
+                              this->npe_hour_pos[1] + this->npe_bar.size() * this->standard_move,
+                              this->npe_hour_size[0],
+                              this->npe_hour_size[1]);
+            act->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            act->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+            date->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            date->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+            hour->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            hour->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+            this->npe_bar.push_back(bar);
+            this->npe_date.push_back(date);
+            this->npe_hour.push_back(hour);
+            this->npe_activity.push_back(act);
+        }
+    }
+}
+
+void CalendarWindow::setupNFE(QDate date)
+{
+    this->nfe_bar.clear();
+    this->nfe_activity.clear();
+    this->nfe_hour.clear();
+    this->nfe_name.clear();
+    QLabel *bar;
+    QLabel *act;
+    QLabel *name;
+    QLabel *hour;
+    int paritycounter = 0;
+    QString qstr(date.toString("dd-MM-yyyy"));
+    for(unsigned int i = 0; i<this->familyevents->events.size(); i++)
+    {
+        if(this->familyevents->events[i].getDate() == qstr)
+        {
+            bar = new QLabel(this);
+            act = new QLabel(this);
+            name = new QLabel(this);
+            hour = new QLabel(this);
+            QPixmap qmp;
+            if(paritycounter++%2 == 0){
+                qmp = QPixmap(":/img/green-bar.jpg");
+            }
+            else{
+                qmp = QPixmap(":/img/yellow-bar.jpg");
+            }
+            bar->setPixmap(qmp);
+            bar->setGeometry(this->nfe_bar_pos[0],
+                             this->nfe_bar_pos[1] + this->nfe_bar.size() * this->standard_move,
+                             this->bar_size[0],
+                             this->bar_size[1]);
+            bar->setText(QString().fromStdString(""));
+            bar->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            bar->setAlignment(Qt::AlignLeft | Qt::AlignHCenter);
+            act->setText(this->familyevents->events[i].getActivity());
+            QFont font;
+            font.setBold(true);
+            font.setKerning(true);
+            font.setFamily("MS Shell Dlg 2");
+            font.setWeight(9);
+            act->setFont(font);
+            name->setFont(font);
+            font.setWeight(8);
+            hour->setFont(font);
+            name->setText(this->familyevents->events[i].getPersonName());
+            hour->setText(this->familyevents->events[i].getStartHour() + " - " + this->familyevents->events[i].getEndHour());
+            act->setGeometry(this->nfe_act_pos[0],
+                             this->nfe_act_pos[1] + this->nfe_bar.size() * this->standard_move,
+                             this->nfe_act_size[0],
+                             this->nfe_act_size[1]);
+            name->setGeometry(this->nfe_name_pos[0],
+                              this->nfe_name_pos[1] + this->nfe_bar.size() * this->standard_move,
+                              this->nfe_name_size[0],
+                              this->nfe_name_size[1]);
+            hour->setGeometry(this->nfe_hour_pos[0],
+                              this->nfe_hour_pos[1] + this->nfe_bar.size() * this->standard_move,
+                              this->nfe_hour_size[0],
+                              this->nfe_hour_size[1]);
+            act->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            act->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+            name->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            name->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+            hour->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+            hour->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+            this->nfe_bar.push_back(bar);
+            this->nfe_name.push_back(name);
+            this->nfe_hour.push_back(hour);
+            this->nfe_activity.push_back(act);
+        }
+    }
+}
+
+void CalendarWindow::deleteButton(QDate date)
+{
+    if(familyevents->isPersonEvent(QString::fromStdString(person->getName()), date.toString("dd-MM-yyyy")))
+    {
+        ui->delTraining->show();
+    }
+    else
+    {
+        ui->delTraining->hide();
+    }
+}
+void CalendarWindow::paintTakenDays()
+{
+    QTextCharFormat qtcfTakenDays;
+    qtcfTakenDays.setFontWeight(1000);
+    qtcfTakenDays.setFontPointSize(12);
+    qtcfTakenDays.setFontItalic(true);
+    QColor takendayscolor;
+    takendayscolor.setRgb(255, 238, 179);
+    qtcfTakenDays.setBackground(QBrush(takendayscolor));
+    QTextCharFormat qtcfWeekend = qtcfTakenDays;
+    qtcfWeekend.setForeground((QBrush(Qt::red)));
+    QTextCharFormat qtcfToday = qtcfTakenDays;
+    qtcfToday.setForeground(QBrush(Qt::blue));
+    QDate date;
+    if (this->familyevents->events.size()<1)
+    {
+        return;
+    }
+    for(auto training:familyevents->events)
+    {
+        if(training.getPersonName().toStdString()==person->getName())
+        {
+            date = QDate::fromString(training.getDate(), "dd-MM-yyyy");
+            if(date==QDate::currentDate())
+            {
+                ui->calendar->setDateTextFormat(date, qtcfToday);
+            }
+            else if(date.dayOfWeek()==6||date.dayOfWeek()==7)
+            {
+                ui->calendar->setDateTextFormat(date, qtcfWeekend);
+            }
+            else
+            {
+                ui->calendar->setDateTextFormat(date, qtcfTakenDays);
+            }
+         }
+    }
+}
+
+void CalendarWindow::clearTakenDays()
+{
+    QDate all_dates;
+    QTextCharFormat qtcfAllDates;
+    QColor allcellscolor;
+    allcellscolor.setRgb(255, 255, 220);
+    qtcfAllDates.setBackground(QBrush(allcellscolor));
+    ui->calendar->setDateTextFormat(all_dates, qtcfAllDates);
+    this->highlightToday();
+
+}
 void CalendarWindow::setupCalendar()
 {
     ui->calendar->setNavigationBarVisible(false);
     ui->calendar->setGridVisible(true);
 }
-void CalendarWindow::displayNearestPersonEvents()
+
+void CalendarWindow::clearNPE()
 {
-    unsigned int iter_t=0;
-    QDate tempDate;
-    while(tempDate.fromString(this->familyevents->events[iter_t].getDate(), "dd-MM-yyyy") < QDate::currentDate())
+    for(unsigned int i=0;i < this->npe_bar.size();i++)
     {
-        iter_t += 1;
-    }
-    int how_many = 0;
-    for(unsigned int iter = iter_t; iter<familyevents->events.size(); ++iter)
-    {
-        if(this->familyevents->events[iter].getPersonName().toStdString() == this->person->getName())
-        {
-            how_many++;
-        }
-    }
-    if (how_many >= 1)
-    {
-        unsigned int iter = iter_t;
-        while(this->familyevents->events[iter].getPersonName().toStdString() != this->person->getName())
-        {
-            iter += 1;
-        }
-        ui->FirstYourId->setText("1.");
-        ui->FirstYourActivity->setText(this->familyevents->events[iter].getActivity());
-        ui->FirstYourDate->setText(this->familyevents->events[iter].getDate());
-        ui->FirstYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-        if(how_many >= 2)
-        {
-            iter += 1;
-            while(this->familyevents->events[iter].getPersonName().toStdString() != this->person->getName())
-            {
-                iter += 1;
-            }
-            ui->SecondYourId->setText("2.");
-            ui->SecondYourActivity->setText(this->familyevents->events[iter].getActivity());
-            ui->SecondYourDate->setText(this->familyevents->events[iter].getDate());
-            ui->SecondYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-            if(how_many >= 3)
-            {
-                iter += 1;
-                while(this->familyevents->events[iter].getPersonName().toStdString() != this->person->getName())
-                {
-                    iter += 1;
-                }
-                ui->ThirdYourId->setText("3.");
-                ui->ThirdYourActivity->setText(this->familyevents->events[iter].getActivity());
-                ui->ThirdYourDate->setText(this->familyevents->events[iter].getDate());
-                ui->ThirdYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-                if(how_many >= 4)
-                {
-                    iter += 1;
-                    while(this->familyevents->events[iter].getPersonName().toStdString() != this->person->getName())
-                    {
-                        iter += 1;
-                    }
-                    ui->FourthYourId->setText("4.");
-                    ui->FourthYourActivity->setText(this->familyevents->events[iter].getActivity());
-                    ui->FourthYourDate->setText(this->familyevents->events[iter].getDate());
-                    ui->FourthYourHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-                }
-            }
-        }
+        npe_bar[i]->hide();
+        npe_date[i]->hide();
+        npe_hour[i]->hide();
+        npe_activity[i]->hide();
     }
 }
-void CalendarWindow::clearThisDayEvents()
+void CalendarWindow::clearNFE()
 {
-    ui->FirstYourId->setText("");
-    ui->SecondYourId->setText("");
-    ui->ThirdYourId->setText("");
-    ui->FourthYourId->setText("");
-
-    ui->FirstYourActivity->setText("");
-    ui->SecondYourActivity->setText("");
-    ui->ThirdYourActivity->setText("");
-    ui->FourthYourActivity->setText("");
-
-    ui->FirstYourDate->setText("");
-    ui->SecondYourDate->setText("");
-    ui->ThirdYourDate->setText("");
-    ui->FourthYourDate->setText("");
-
-    ui->FirstYourHour->setText("");
-    ui->SecondYourHour->setText("");
-    ui->ThirdYourHour->setText("");
-    ui->FourthYourHour->setText("");
-
-    ui->FirstFamilyId->setText("");
-    ui->SecondFamilyId->setText("");
-    ui->ThirdFamilyId->setText("");
-    ui->FourthFamilyId->setText("");
-
-    ui->FirstFamilyActivity->setText("");
-    ui->SecondFamilyActivity->setText("");
-    ui->ThirdFamilyActivity->setText("");
-    ui->FourthFamilyActivity->setText("");
-
-    ui->FirstFamilyName->setText("");
-    ui->SecondFamilyName->setText("");
-    ui->ThirdFamilyName->setText("");
-    ui->FourthFamilyName->setText("");
-
-    ui->FirstFamilyHour->setText("");
-    ui->SecondFamilyHour->setText("");
-    ui->ThirdFamilyHour->setText("");
-    ui->FourthFamilyHour->setText("");
-}
-void CalendarWindow::displayThisDayEvents(QDate date)
-{
-    int how_many = 0;
-    QString qstr(date.toString("dd-MM-yyyy"));
-    for(unsigned int iter = 0; iter<this->familyevents->events.size(); ++iter)
+    for(unsigned int i=0;i < this->nfe_bar.size();i++)
     {
-        if(this->familyevents->events[iter].getDate() == qstr)
-        {
-            how_many++;
-        }
-    }
-    if (how_many >= 1)
-    {
-        unsigned int iter = 0;
-        while(this->familyevents->events[iter].getDate() != date.toString("dd-MM-yyyy"))
-        {
-            iter += 1;
-        }
-        ui->FirstFamilyId->setText("1.");
-        ui->FirstFamilyActivity->setText(this->familyevents->events[iter].getActivity());
-        ui->FirstFamilyName->setText(this->familyevents->events[iter].getPersonName());
-        ui->FirstFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-        if(how_many >= 2)
-        {
-            iter += 1;
-            while(this->familyevents->events[iter].getDate() != date.toString("dd-MM-yyyy"))
-            {
-                iter += 1;
-            }
-            ui->SecondFamilyId->setText("2.");
-            ui->SecondFamilyActivity->setText(this->familyevents->events[iter].getActivity());
-            ui->SecondFamilyName->setText(this->familyevents->events[iter].getPersonName());
-            ui->SecondFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-            if(how_many >= 3)
-            {
-                iter += 1;
-                while(this->familyevents->events[iter].getDate() != date.toString("dd-MM-yyyy"))
-                {
-                    iter += 1;
-                }
-                ui->ThirdFamilyId->setText("3.");
-                ui->ThirdFamilyActivity->setText(this->familyevents->events[iter].getActivity());
-                ui->ThirdFamilyName->setText(this->familyevents->events[iter].getPersonName());
-                ui->ThirdFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-                if(how_many >= 4)
-                {
-                    iter += 1;
-                    while(this->familyevents->events[iter].getDate() != date.toString("dd-MM-yyyy"))
-                    {
-                        iter += 1;
-                    }
-                    ui->FourthFamilyId->setText("4.");
-                    ui->FourthFamilyActivity->setText(this->familyevents->events[iter].getActivity());
-                    ui->FourthFamilyName->setText(this->familyevents->events[iter].getPersonName());
-                    ui->FourthFamilyHour->setText(this->familyevents->events[iter].getStartHour() + " - " + this->familyevents->events[iter].getEndHour());
-                }
-            }
-        }
+        nfe_bar[i]->hide();
+        nfe_name[i]->hide();
+        nfe_hour[i]->hide();
+        nfe_activity[i]->hide();
     }
 }
+
+void CalendarWindow::showNPE()
+{
+    for(unsigned int i=0;i < this->npe_bar.size();i++)
+    {
+        npe_bar[i]->show();
+        npe_date[i]->show();
+        npe_activity[i]->show();
+        npe_hour[i]->show();
+    }
+}
+void CalendarWindow::showNFE()
+{
+    for(unsigned int i=0;i < this->nfe_bar.size();i++)
+    {
+        nfe_bar[i]->show();
+        nfe_name[i]->show();
+        nfe_activity[i]->show();
+        nfe_hour[i]->show();
+    }
+}
+
+
 void  CalendarWindow::refreshEvents(QDate date)
 {
-    clearThisDayEvents();
-    displayNearestPersonEvents();
-    displayThisDayEvents(date);
+    clearNPE();
+    setupNPE();
+    showNPE();
+    clearNFE();
+    setupNFE(date);
+    showNFE();
 }
 void  CalendarWindow::highlightToday()
 {
@@ -212,7 +308,6 @@ void  CalendarWindow::highlightToday()
     QColor todaycolor;
     todaycolor.setRgb(0, 82, 204);
     qtcf.setForeground(QBrush(todaycolor));
-    qtcf.setFontItalic(true);
     qtcf.setFontKerning(true);
     ui->calendar->setDateTextFormat(QDate::currentDate(), qtcf);
 }
@@ -235,21 +330,14 @@ void CalendarWindow::printActualDate()
     QString qstr = date.toString("'Wybrany dzień: 'dddd, dd.MM.yyyy");
     ui->actualdate->setText(qstr);
 }
-CalendarWindow::~CalendarWindow()
-{
-    delete ui;
-    delete person;
-    delete addevwin;
-}
 
 void CalendarWindow::on_calendar_selectionChanged()
 {
     QDate date = ui->calendar->selectedDate();
     refreshEvents(date);
-    // clearThisDayEvents();
-    // displayThisDayEvents(date);
     QString qstr = date.toString("'Wybrany dzień: 'dddd, dd.MM.yyyy");
     ui->actualdate->setText(qstr);
+    deleteButton(date);
 }
 
 void CalendarWindow::on_backtodaybutton_clicked()
@@ -270,8 +358,8 @@ void CalendarWindow::on_pushButton_2_clicked()
 void CalendarWindow::on_addEventButton_clicked()
 {
     QString date = ui->calendar->selectedDate().toString("dd-MM-yyyy");
-    this->addevwin->setDate(ui->calendar->selectedDate());
-    this->addevwin->setPersonName(QString::fromStdString(this->person->getName()));
+    this->addevwin->operator=(ui->calendar->selectedDate());
+    this->addevwin->operator=(QString::fromStdString(this->person->getName()));
     addevwin->showOnScreen();
 }
 
@@ -286,4 +374,12 @@ void CalendarWindow::on_delTraining_clicked()
 QDate CalendarWindow::getChoosenDate() const
 {
     return ui->calendar->selectedDate();
+}
+
+void CalendarWindow::on_refreshButton_clicked()
+{
+    refreshEvents(ui->calendar->selectedDate());
+    clearTakenDays();
+    paintTakenDays();
+    deleteButton();
 }

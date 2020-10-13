@@ -32,22 +32,64 @@ void Events::delEvent(QString p_name, QString act_name, QString g_date, QString 
     }
 }
 
-void Events::getFromFile(QString filename)
+void Events::getFromFile(QString filepath)
 {   std::string line;
-    std::ifstream myfile(filename.toStdString());
-    while(std::getline(myfile, line))
+    std::fstream myfile;
+    myfile.open(filepath.toStdString(), std::fstream::in | std::fstream::out | std::fstream::app);
+    if(!myfile)
     {
-        std::istringstream iss(line);
-        Event tempEvent;
-        iss >> tempEvent;
-        this->addEvent(tempEvent);
+        myfile.open(filepath.toStdString(), std::fstream::in | std::fstream::out | std::fstream::trunc);
+        myfile<<"\n";
+        myfile.close();
+    }
+    else
+    {
+        while(std::getline(myfile, line))
+        {
+            std::istringstream iss(line);
+            Event tempEvent;
+            iss >> tempEvent;
+            this->addEvent(tempEvent);
+        }
+        myfile.close();
     }
 }
-void Events::saveToFile(std::string filename)
+void Events::saveToFile(std::string filepath)
 {
-    std::ofstream myfile(filename);
+    std::ofstream myfile(filepath);
     for(auto event:Events::events)
     {
         myfile << event << "\n";
     }
+    myfile.close();
+}
+
+bool Events::isPersonEvent(QString p_name, QString g_date)
+{
+    for(auto ev:events)
+    {
+        if(ev.getDate()==g_date && ev.getPersonName()==p_name)
+        {
+            return true;
+        }
+   }
+   return false;
+}
+
+
+bool Events::comparePtrs(Event ev1, Event ev2)
+{
+    if(ev1.date < ev2.date || (ev1.date==ev2.date && ev1.getStartHour() < ev2.getStartHour()))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void Events::operator+=(Event ev)
+{
+    addEvent(ev);
 }

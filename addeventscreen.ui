@@ -420,6 +420,9 @@
      <height>208</height>
     </size>
    </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
    <property name="autoRepeat">
     <bool>false</bool>
    </property>
@@ -448,6 +451,9 @@
      <width>300</width>
      <height>200</height>
     </size>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
    </property>
   </widget>
   <widget class="QLabel" name="starthourtxt">

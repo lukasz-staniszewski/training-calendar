@@ -102,6 +102,9 @@
      <height>200</height>
     </size>
    </property>
+   <property name="shortcut">
+    <string>Esc</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
@@ -167,6 +170,9 @@
      <width>200</width>
      <height>208</height>
     </size>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
    </property>
    <property name="autoRepeat">
     <bool>false</bool>

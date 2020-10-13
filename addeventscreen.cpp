@@ -61,7 +61,36 @@ void AddEventScreen::on_addbutton_clicked()
         QString date_qstr = date.toString("dd-MM-yyyy");
         QString shour_qstr = timestart.toString("hh:mm");
         QString fhour_qstr = timefin.toString("hh:mm");
-        familyevents->addEvent(Event(person_name.toStdString(), act_name.toStdString(), date_qstr.toStdString(), shour_qstr.toStdString(), fhour_qstr.toStdString()));
-        this->hide();
+        if(isSuchEvent(person_name, act_name, date_qstr, shour_qstr))
+        {
+            QMessageBox::warning(this, "BŁĄD", "JUŻ ISTNIEJE TAKI TRENING!");
+        }
+        else
+        {
+            familyevents->operator+=(Event(person_name.toStdString(), act_name.toStdString(), date_qstr.toStdString(), shour_qstr.toStdString(), fhour_qstr.toStdString()));
+            this->hide();
+        }
     }
+}
+
+void AddEventScreen::operator=(const QString name)
+{
+    setPersonName(name);
+}
+
+void AddEventScreen::operator=(const QDate date)
+{
+    setDate(date);
+}
+
+bool AddEventScreen::isSuchEvent(QString pers_name, QString act_name, QString date_str, QString stime_str)
+{
+    for(auto ev:familyevents->events)
+    {
+        if(ev.getDate()==date_str && ev.getPersonName() == pers_name && ev.getStartHour() == stime_str && ev.getActivity()==act_name)
+        {
+            return true;
+        }
+    }
+    return false;
 }

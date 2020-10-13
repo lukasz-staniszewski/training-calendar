@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1299</width>
+    <width>1631</width>
     <height>640</height>
    </rect>
   </property>
@@ -233,7 +233,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -242,9 +242,9 @@
   <widget class="QLabel" name="welcomemsg">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>-10</y>
-     <width>831</width>
+     <x>410</x>
+     <y>0</y>
+     <width>491</width>
      <height>151</height>
     </rect>
    </property>
@@ -262,7 +262,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="backtodaybutton">
@@ -358,9 +358,9 @@
   <widget class="QLabel" name="YourNearestTrening">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>-30</y>
-     <width>271</width>
+     <x>1340</x>
+     <y>-20</y>
+     <width>261</width>
      <height>131</height>
     </rect>
    </property>
@@ -374,8 +374,8 @@
   <widget class="QLabel" name="FamilyDayTrening">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>320</y>
+     <x>970</x>
+     <y>-10</y>
      <width>271</width>
      <height>111</height>
     </rect>
@@ -385,486 +385,6 @@
    </property>
    <property name="pixmap">
     <pixmap resource="starting_image.qrc">:/img/familytday.jpg</pixmap>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FirstYourId">
-   <property name="geometry">
-    <rect>
-     <x>960</x>
-     <y>90</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FirstYourActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>90</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FirstYourDate">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>90</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="SecondYourActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>150</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="SecondYourDate">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>150</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="SecondYourId">
-   <property name="geometry">
-    <rect>
-     <x>960</x>
-     <y>150</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ThirdYourDate">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>210</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ThirdYourActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>210</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ThirdYourId">
-   <property name="geometry">
-    <rect>
-     <x>960</x>
-     <y>210</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FourthYourActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>260</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FourthYourDate">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>260</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FourthYourId">
-   <property name="geometry">
-    <rect>
-     <x>960</x>
-     <y>260</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FirstFamilyActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>420</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FirstFamilyName">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>420</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FirstFamilyId">
-   <property name="geometry">
-    <rect>
-     <x>950</x>
-     <y>420</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="SecondFamilyActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>470</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="SecondFamilyId">
-   <property name="geometry">
-    <rect>
-     <x>950</x>
-     <y>470</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="SecondFamilyName">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>470</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ThirdFamilyActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>520</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ThirdFamilyId">
-   <property name="geometry">
-    <rect>
-     <x>950</x>
-     <y>520</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ThirdFamilyName">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>520</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FourthFamilyActivity">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>570</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FourthFamilyId">
-   <property name="geometry">
-    <rect>
-     <x>950</x>
-     <y>570</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FourthFamilyName">
-   <property name="geometry">
-    <rect>
-     <x>1190</x>
-     <y>570</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="addEventButton">
@@ -919,158 +439,94 @@
     </size>
    </property>
   </widget>
-  <widget class="QLabel" name="FirstYourHour">
+  <widget class="QPushButton" name="refreshButton">
    <property name="geometry">
     <rect>
-     <x>1090</x>
-     <y>120</y>
-     <width>141</width>
-     <height>20</height>
+     <x>280</x>
+     <y>10</y>
+     <width>121</width>
+     <height>61</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
     <string/>
    </property>
+   <property name="icon">
+    <iconset resource="starting_image.qrc">
+     <normaloff>:/img/refresh-cal.jpg</normaloff>:/img/refresh-cal.jpg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>120</width>
+     <height>200</height>
+    </size>
+   </property>
   </widget>
-  <widget class="QLabel" name="SecondYourHour">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>1090</x>
-     <y>180</y>
-     <width>141</width>
-     <height>20</height>
+     <x>1270</x>
+     <y>80</y>
+     <width>21</width>
+     <height>531</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string/>
    </property>
+   <property name="pixmap">
+    <pixmap resource="starting_image.qrc">:/img/rod.jpg</pixmap>
+   </property>
   </widget>
-  <widget class="QLabel" name="ThirdYourHour">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>1090</x>
-     <y>240</y>
-     <width>141</width>
-     <height>20</height>
+     <x>910</x>
+     <y>80</y>
+     <width>21</width>
+     <height>531</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string/>
    </property>
+   <property name="pixmap">
+    <pixmap resource="starting_image.qrc">:/img/rod.jpg</pixmap>
+   </property>
   </widget>
-  <widget class="QLabel" name="FourthYourHour">
+  <widget class="QLabel" name="white">
    <property name="geometry">
     <rect>
-     <x>1090</x>
-     <y>300</y>
-     <width>141</width>
-     <height>20</height>
+     <x>915</x>
+     <y>-15</y>
+     <width>851</width>
+     <height>691</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
    </property>
    <property name="text">
     <string/>
    </property>
-  </widget>
-  <widget class="QLabel" name="FirstFamilyHour">
-   <property name="geometry">
-    <rect>
-     <x>1090</x>
-     <y>450</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
+   <property name="pixmap">
+    <pixmap resource="starting_image.qrc">:/img/white.jpg</pixmap>
    </property>
   </widget>
-  <widget class="QLabel" name="SecondFamilyHour">
-   <property name="geometry">
-    <rect>
-     <x>1090</x>
-     <y>500</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ThirdFamilyHour">
-   <property name="geometry">
-    <rect>
-     <x>1090</x>
-     <y>550</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="FourthFamilyHour">
-   <property name="geometry">
-    <rect>
-     <x>1090</x>
-     <y>600</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
+  <zorder>calendar</zorder>
+  <zorder>welcomemsg</zorder>
+  <zorder>actualdate</zorder>
+  <zorder>backtodaybutton</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>addEventButton</zorder>
+  <zorder>delTraining</zorder>
+  <zorder>refreshButton</zorder>
+  <zorder>white</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label</zorder>
+  <zorder>FamilyDayTrening</zorder>
+  <zorder>YourNearestTrening</zorder>
  </widget>
  <resources>
   <include location="starting_image.qrc"/>

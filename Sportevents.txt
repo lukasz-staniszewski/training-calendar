@@ -1,6 +1,22 @@
-Albert; Piłka nożna; 19-05-2020; 14:34; 12:12
 Albert; Piłka nożna; 19-05-2020; 12:00; 13:00
-Mateusz; Piłka nozna; 20-05-2020; 14:34; 12:12
-Lukasz; Piłka nożna; 21-05-2020; 12:22; 12:23
+Albert; Piłka nożna; 19-05-2020; 14:34; 12:12
+Mateusz; Piłka nozna; 20-05-2020; 10:34; 12:12
 Ela; Koszykówka; 22-05-2020; 12:00; 13:00
+Lukasz; Siłownia; 24-05-2020; 09:00; 13:00
+Lukasz; Judo; 24-05-2020; 15:00; 17:00
 Albert; Piłka nożna; 24-05-2020; 23:20; 23:40
+Lukasz; Piłka nożna; 26-05-2020; 09:00; 11:00
+Albert; Piłka nożna; 26-05-2020; 09:00; 11:00
+Ela; Aerobik; 26-05-2020; 10:00; 11:00
+Mateusz; Balet; 26-05-2020; 10:00; 11:00
+Albert; Siłownia; 26-05-2020; 12:00; 13:30
+Lukasz; Siatkówka; 26-05-2020; 13:00; 15:00
+Lukasz; Siłownia; 26-05-2020; 13:00; 14:00
+Albert; Golf; 26-05-2020; 20:00; 22:00
+Lukasz; Judo; 30-05-2020; 12:00; 12:30
+Luk; Boks; 02-10-2020; 10:00; 13:00
+Lukasz; asd; 06-10-2020; 10:00; 13:00
+Lukasz; Pilka nozna; 08-10-2020; 10:00; 12:00
+Lukasz; Silownia; 12-10-2020; 14:00; 16:00
+Lukasz; Boks; 13-10-2020; 13:00; 14:00
+Lukasz; Pilka nozna; 17-10-2020; 10:00; 12:00

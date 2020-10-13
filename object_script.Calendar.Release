@@ -1,0 +1,15 @@
+release/addeventscreen.o
+release/calendarwindow.o
+release/deleteeventwindow.o
+release/event.o
+release/events.o
+release/main.o
+release/mainwindow.o
+release/man.o
+release/person.o
+release/woman.o
+release/qrc_starting_image.o
+release/moc_addeventscreen.o
+release/moc_calendarwindow.o
+release/moc_deleteeventwindow.o
+release/moc_mainwindow.o
