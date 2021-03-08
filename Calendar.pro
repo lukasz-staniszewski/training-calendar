@@ -16,33 +16,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    addeventscreen.cpp \
-    calendarwindow.cpp \
-    deleteeventwindow.cpp \
-    event.cpp \
-    events.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    man.cpp \
-    person.cpp \
-    woman.cpp
+    sources/addeventscreen.cpp \
+    sources/calendarwindow.cpp \
+    sources/deleteeventwindow.cpp \
+    sources/event.cpp \
+    sources/events.cpp \
+    sources/main.cpp \
+    sources/mainwindow.cpp \
+    sources/man.cpp \
+    sources/person.cpp \
+    sources/woman.cpp
 
 HEADERS += \
-    addeventscreen.h \
-    calendarwindow.h \
-    deleteeventwindow.h \
-    event.h \
-    events.h \
-    mainwindow.h \
-    man.h \
-    person.h \
-    woman.h
+    headers/addeventscreen.h \
+    headers/calendarwindow.h \
+    headers/deleteeventwindow.h \
+    headers/event.h \
+    headers/events.h \
+    headers/mainwindow.h \
+    headers/man.h \
+    headers/person.h \
+    headers/woman.h
 
 FORMS += \
-    addeventscreen.ui \
-    calendarwindow.ui \
-    deleteeventwindow.ui \
-    mainwindow.ui
+    ui_files/addeventscreen.ui \
+    ui_files/calendarwindow.ui \
+    ui_files/deleteeventwindow.ui \
+    ui_files/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -50,4 +50,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    starting_image.qrc
+    resources/starting_image.qrc
