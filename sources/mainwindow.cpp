@@ -65,5 +65,5 @@ void MainWindow::on_login_clicked()
 
 void MainWindow::on_gitbut_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://gitlab-stud.elka.pw.edu.pl/lstanisz/Calendar"));
+    QDesktopServices::openUrl(QUrl("https://github.com/lukasz-staniszewski/training-calendar"));
 }
